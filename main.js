@@ -16,6 +16,7 @@ $(document).ready(function(){
 			$("#hours").text(hours - 12);
 			$("#meridian").text(" PM");
 			} else if (hours === 12){
+			$("#hours").text(hours);
 			$("#meridian").text(" PM");
 			}else {
 			$("#hours").text(hours);
