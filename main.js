@@ -9,15 +9,17 @@ $(document).ready(function(){
 	var milliseconds = dateTime.getMilliseconds();
 	
 		//Hours: Convert Military time to cycle of 1-12, add meridiem  
-		if (hours > 12){
-			$("#hours").text(hours - 12);
-			$("#meridian").text(" PM");
-			}else if (hours < 12){
+		if (hours < 10){
 			$("#hours").text("0" + hours);
 			$("#meridian").text(" AM"); 
+			}else if(hours > 12){
+			$("#hours").text(hours - 12);
+			$("#meridian").text(" PM");
+			} else if (hours === 12){
+			$("#meridian").text(" PM");
 			}else {
 			$("#hours").text(hours);
-			$("#meridian").text(" PM");
+			$("#meridian").text(" AM");
 			};
 		//Minutes: Add 0 to single digits 
 		if (minutes < 10){
@@ -42,7 +44,7 @@ $(document).ready(function(){
 			}
 
 			//Task 1-> Minutes: Make background change on even/odd
-			if (minutes % 2 !== 0 ){
+			if(minutes % 2 !== 0 ){
 				$("body").css({"background-color":"black",
 								"color":"white"});
 				}else{
@@ -55,6 +57,7 @@ $(document).ready(function(){
 			} else{
 			$("#danceBreak").text("");
 			};
+
 			//Easter Egg Experiment 2: Font Change at Specific Times
 			if (minutes === 17 || minutes === 27|| minutes === 47){
 			$("h1").css("font-family","Lobster");
